@@ -103,27 +103,27 @@ Each `*_*.errors.refined` file contains two columns of integers, the first (or s
   <tr>
     <td> result/FAUST/*_*_intra.refined.npy </td>
     <td> result/FAUST/35_2_intra.refined.npy </td>
-    <td> Mesh to Mesh correspondence after ICP Refinement for intra-subject pairs </td>
+    <td> Mesh to Mesh correspondence error after ICP Refinement for intra-subject pairs </td>
   </tr>
   <tr>
     <td> result/FAUST/*_*_inter.errors </td>
     <td> result/FAUST/35_2_inter.errors </td>
-    <td> Mesh to Mesh correspondence before ICP Refinement for inter-subject pairs </td>
+    <td> Mesh to Mesh correspondence error before ICP Refinement for inter-subject pairs </td>
   </tr>
   <tr>
     <td> result/FAUST/*_*_inter.errors.refined </td>
     <td> result/FAUST/35_2_inter.errors.refined </td>
-    <td> Mesh to Mesh correspondence after ICP Refinement for inter-subject pairs </td>
+    <td> Mesh to Mesh correspondence error after ICP Refinement for inter-subject pairs </td>
   </tr>
   <tr>
     <td> result/FAUST/*_*_intra.errors </td>
     <td> result/FAUST/35_2_intra.errors </td>
-    <td> Mesh to Mesh correspondence before ICP Refinement for intra-subject pairs </td>
+    <td> Mesh to Mesh correspondence error before ICP Refinement for intra-subject pairs </td>
   </tr>
   <tr>
     <td> result/FAUST/*_*_intra.errors.refined </td>
     <td> result/FAUST/35_2_intra.errors.refined </td>
-    <td> Mesh to Mesh correspondence after ICP Refinement for intra-subject pairs </td>
+    <td> Mesh to Mesh correspondence error after ICP Refinement for intra-subject pairs </td>
   </tr>
 </table>
 We provide the computed mesh to template correspondence from each mesh in the MPI-FAUST dataset to the SMPL model, as well as mesh-to-mesh correspondences and error statistics for all inter-subject and intra-subject pairs.
