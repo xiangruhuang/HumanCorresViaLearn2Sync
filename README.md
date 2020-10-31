@@ -1,4 +1,4 @@
-# HybridCorrespondence
+# Dense Human Correspondence via Learning Transformation Synchronization on Graphs
 
 <img align="center" src="./teaser_pipeline.png">
 
