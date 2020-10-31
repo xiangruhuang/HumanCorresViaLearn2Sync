@@ -21,7 +21,7 @@ You can optionally select the dataset you would like to test, simply comment/unc
 This error will be reported by standard output of the testing program.
 
 ## 2.2 Test Mesh to Mesh performance.
-### 3.2.1 Synchronize scan-to-template correspondences and Refine.
+### 2.2.1 Synchronize scan-to-template correspondences and Refine.
 
 We first synchronize scan-to-template correspondences into mesh-to-template correspondences. 
 Then we run non-rigid ICP between SMPL deformation model and each mesh to refined the results.
@@ -33,7 +33,7 @@ python -m eval.align_mesh_corres --dataset FAUST --offset 0 --length 100
 This will dump synchronized and ICP-refined correspondences in `data/result/$DATASET/{}_{}.mesh_corres` and `data/result/$DATASET/{}_{}.mesh_corres_icp`, respectively.
 Check [here](./stats.md) for a detailed explanation.
 
-### 2.1.2 Evaluate by pairs.
+### 2.2.2 Evaluate by pairs.
 We then used the refined correspondences to evaluate correspondences between pairs of mesh.
 ```
 python -m eval.eval_corres --dataset SHREC19 --refined
