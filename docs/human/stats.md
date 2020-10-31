@@ -41,12 +41,12 @@ The unpacked folder should contains two sub-folders: `SHREC19` and `FAUST` corre
   <tr>
     <td> result/SHREC19/*_*.errors </td>
     <td> result/SHREC19/35_2.errors </td>
-    <td> Mesh to Mesh correspondence before ICP Refinement </td>
+    <td> Mesh to Mesh correspondence error before ICP Refinement </td>
   </tr>
   <tr>
     <td> result/SHREC19/*_*.errors.refined </td>
     <td> result/SHREC19/35_2.errors.refined </td>
-    <td> Mesh to Mesh correspondence after ICP Refinement </td>
+    <td> Mesh to Mesh correspondence error after ICP Refinement </td>
   </tr>
 </table>
 We provide the computed mesh to template correspondence from each mesh in the SHREC19-Human dataset to the SMPL model, as well as mesh-to-mesh correspondences and error statistics for the official 430 pairs.
