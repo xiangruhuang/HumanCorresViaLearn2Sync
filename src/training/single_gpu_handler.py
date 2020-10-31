@@ -32,7 +32,7 @@ class Handler(object):
     self.error_thresholds=[0.05, 0.1, 1e10]
     self.training, self.reg = (training, reg)
 
-  def parse(self, out_dict, data):
+  def parse(self, out_dict, data, require_corres=False):
     gt_feats = data.y[:, :-3]
     gt_points = data.y[:, -3:]
     self.count += 1
@@ -43,6 +43,26 @@ class Handler(object):
       labels_before_reg = errors < error_threshold
       self.errors_before_reg[i] += labels_before_reg.sum().item()
     self.total_l2_loss_before_reg[0] += errors.mean().item()
+    if require_corres:
+      res_dict = {'ori_pos': [],
+                  'pred_before_reg': [],
+                  'pred_after_reg': []}
+      corres_list = []
+      offset = 0
+      for i in range(data.batch.max()+1):
+        mask = (data.batch == i)
+        length = mask.sum()
+        corres_i = corres[mask]
+        res_dict['ori_pos'].append(
+          data.ori_pos[mask].cpu().numpy()
+        )
+        res_dict['pred_before_reg'].append(
+          pred_points[mask].cpu().numpy()
+        )
+        if self.reg:
+          res_dict['pred_after_reg'].append(
+            out_dict['x_out0'][mask].cpu().numpy()
+          )
 
     if self.reg:
       loss = F.mse_loss(out_dict['x_out0'], gt_points)
@@ -55,7 +75,10 @@ class Handler(object):
     else:
       loss = F.mse_loss(out_dict['feats'], gt_feats)
       self.total_loss += loss.item()
-    return loss
+    if require_corres:
+      return loss, res_dict
+    else:
+      return loss
 
   def visualize(self, bar):
     l2_str = '({0:06f}, {1:06f})'.format(

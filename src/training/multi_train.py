@@ -92,7 +92,7 @@ def test(model, loader, args, epoch):
       else:
         loss = handler.parse(out_dict, data_list)
 
-      if ((i+1) % 1000 == 0) or (i == len(loader)-1):
+      if (i < 10) or ((i+1) % 1000 == 0) or (i == len(loader)-1):
         handler.visualize(bar)
 
   torch.cuda.empty_cache()

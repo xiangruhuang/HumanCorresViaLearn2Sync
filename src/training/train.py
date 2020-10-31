@@ -1,5 +1,6 @@
 import os, os.path as osp
 import re
+import scipy.io as sio
 import glob
 import torch
 import torch.nn.functional as F
@@ -61,7 +62,7 @@ def test(model, loader, args, epoch):
       out_dict = model(data)
       if args.dump_result:
         loss, res_dict = handler.parse(out_dict, data, require_corres=True)
-        for idx, data in enumerate(data_list):
+        for idx in range(len(res_dict['ori_pos'])):
           sio.savemat(
             MAT.format(start),
             {'ori_pos': res_dict['ori_pos'][idx],
@@ -71,7 +72,7 @@ def test(model, loader, args, epoch):
           start += 1
       else:
         loss = handler.parse(out_dict, data)
-      if ((i + 1) % 100 == 0) or (i == len(loader) - 1):
+      if (i < 100) or ((i + 1) % 100 == 0) or (i == len(loader) - 1):
         handler.visualize(bar)
       if (i + 1) % 100 == 0:
         torch.save({
@@ -116,8 +117,8 @@ if __name__ == '__main__':
       pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
       model_dict.update(pretrained_dict)
       model.load_state_dict(model_dict)
-      optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-      lr_scheduler.load_state_dict(checkpoint['lr_scheduler_state_dict'])
+      #optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+      #lr_scheduler.load_state_dict(checkpoint['lr_scheduler_state_dict'])
 
   train_loader = hc.data.DataLoader(
     train_dataset,
