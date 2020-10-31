@@ -1,0 +1,6 @@
+data/surreal/*
+data/ckpt/*
+data/smpl/*
+__pycache__/
+*.pyc
+pymp-*
