@@ -135,10 +135,10 @@ if __name__ == '__main__':
       model_dict.update(pretrained_dict)
       model.load_state_dict(model_dict)
       if not args.phase_transition:
-        print(checkpoint['optimizer_state_dict']['param_groups'])
-        print(optimizer.state_dict()['param_groups'])
-        #optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        #lr_scheduler.load_state_dict(checkpoint['lr_scheduler_state_dict'])
+        #print(checkpoint['optimizer_state_dict']['param_groups'])
+        #print(optimizer.state_dict()['param_groups'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        lr_scheduler.load_state_dict(checkpoint['lr_scheduler_state_dict'])
 
   train_loader = hc.data.DataListLoader(
     train_dataset,
