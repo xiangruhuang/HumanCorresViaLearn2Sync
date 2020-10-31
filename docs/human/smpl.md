@@ -1,7 +1,7 @@
 # Prepare SMPL Deformation model
 
 Download [SMPL](https://smpl.is.tue.mpg.de/) deformation model.
-Look for the `.pkl` files for the female and male human models, place these two `.pkl` files as `data/smpl/female_model.pkl` and `data/smpl/male_model.pkl`.
+Look for the `.pkl` files for the female and male human models, place these two `.pkl` files as `data/smpl/model_intrinsics/female_model.pkl` and `data/smpl/model_intrinsics/male_model.pkl`.
 
 Download pre-computed descriptors and place it under `data/smpl/embedding/` by running the following command under `data/`. 
 ```
